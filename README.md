@@ -24,14 +24,17 @@ Print the transformed features
 # REG NO: 212221230078
 
 ```
-Importing Libraries
+### Importing Libraries
+
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import scipy.stats as stats
 from sklearn.preprocessing import QuantileTransformer
-Reading CSV File
+
+### Reading CSV File
+
 df=pd.read_csv("/content/drive/MyDrive/Colab Notebooks/Semester 3/19AI403 _Intro to DS/Exp_6/Data_to_Transform.csv")
 df
 Basic Process
@@ -50,7 +53,8 @@ df.columns
 df.isnull().sum()
 
 df.duplicated()
-Before Transformation
+
+### Before Transformation
 sm.qqplot(df['Highly Positive Skew'],fit=True,line='45')
 plt.show()
 
@@ -62,7 +66,8 @@ plt.show()
 
 sm.qqplot(df['Moderate Negative Skew'],fit=True,line='45')
 plt.show()
-Log Transformation
+
+### Log Transformation
 df['Highly Positive Skew'] = np.log(df['Highly Positive Skew'])
 
 sm.qqplot(df['Highly Positive Skew'],fit=True,line='45')
@@ -73,12 +78,16 @@ df['Moderate Positive Skew'] = np.log(df['Moderate Positive Skew'])
 
 sm.qqplot(df['Moderate Positive Skew'],fit=True,line='45')
 plt.show()
-Reciprocal Transformation
+
+### Reciprocal Transformation
+
 df['Highly Positive Skew'] = 1/df['Highly Positive Skew']
 
 sm.qqplot(df['Highly Positive Skew'],fit=True,line='45')
 plt.show()
-Square Root Transformation
+
+### Square Root Transformation
+
 df['Highly Positive Skew'] = df['Highly Positive Skew']**(1/1.2)
 
 sm.qqplot(df['Highly Positive Skew'],fit=True,line='45')
@@ -97,7 +106,9 @@ df['ModerateNegativeSkew_2']=pd.DataFrame(transformer.fit_transform(df[['Moderat
 
 sm.qqplot(df['ModerateNegativeSkew_2'],fit=True,line='45')
 plt.show()
-Quantile Transformation
+
+### Quantile Transformation
+
 from sklearn.preprocessing import QuantileTransformer
 qt = QuantileTransformer(output_distribution = 'normal')
 
@@ -109,42 +120,61 @@ plt.show()
 
 ### OUTPUT:
 
-Reading CSV File
+### Reading CSV File
+![output](1.png)
 
+### Basic Process
+## Head
+![output](2.png)
+## Info
+![output](3.png)
+## Describe
+![output](4.png)
+## Tail
+![output](5.png)
+## Shape
+![output](6.png)
+## Columns
+![output](7.png)
+## Null Values
+![output](8.png)
+## Duplicate Values
+![output](9.png)
 
-Basic Process
-Head
-Info
-Describe
-Tail
-Shape
-Columns
-Null Values
-Duplicate Values
+### Before Transformation
+## Highly Positive Skew
+![output](10.png)
+## Highly Negative Skew
+![output](11.png)
+## Moderate Positive Skew
+![output](12.png)
+## Moderate Negative Skew
+![output](13.png)
 
-Before Transformation
-Highly Positive Skew
-Highly Negative Skew
-Moderate Positive Skew
-Moderate Negative Skew
+### Log Transformation
+## Highly Positive Skew
+![output](14.png)
+## Moderate Positive Skew
+![output](15.png)
 
-Log Transformation
-Highly Positive Skew
-Moderate Positive Skew
+### Reciprocal Transformation
+## Highly Positive Skew
+![output](16.png)
 
-Reciprocal Transformation
-Highly Positive Skew
+### Square Root Transformation
+## Highly Positive Skew
+![output](17.png)
 
-Square Root Transformation
-Highly Positive Skew
+### Power Transformation
+## Moderate Positive Skew
+![output](18.png)
+## Moderate Negative Skew
+![output](19.png)
 
-Power Transformation
-Moderate Positive Skew
-Moderate Negative Skew
+### Quantile Transformation
+## Moderate Negative Skew
+![output](20.png)
 
-Quantile Transformation
-Moderate Negative Skew
-
-RESULT:
+### RESULT:
 Thus feature transformation is done for the given dataset.
 
